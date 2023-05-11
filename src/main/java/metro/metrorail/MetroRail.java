@@ -1,9 +1,9 @@
 
-package groupd.metrorail;
+package metro.metrorail;
 
 /**
  *
- * @author CSE215 section-16 Group-D
+ * @author CSE215, Sec - 6, Group - D;
  */
 public class MetroRail {
 
