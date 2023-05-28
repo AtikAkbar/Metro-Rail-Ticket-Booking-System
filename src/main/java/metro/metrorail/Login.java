@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Login extends JFrame implements ActionListener{
+
+    JButton cancel,next;
     
     Login(){
 
@@ -32,15 +34,16 @@ public class Login extends JFrame implements ActionListener{
         password.setBounds(150,150,150,30);
         add(password);
         
-        JButton cancel = new JButton("Cancel");
+         cancel = new JButton("Cancel");
         cancel.setBounds(40,210,120,30);
         cancel.addActionListener(this);
         cancel.setBackground(Color.BLACK);
         cancel.setForeground(Color.WHITE);
         add(cancel);
         
-        JButton next = new JButton("Next");
+         next = new JButton("Next");
         next.setBounds(200,210,120,30);
+        next.addActionListener(this);
         next.setBackground(Color.BLACK);
         next.setForeground(Color.WHITE);
         add(next);
@@ -51,8 +54,13 @@ public class Login extends JFrame implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent ae){
-         dispose();
-        new Window();
+        if(ae.getSource() == cancel){
+            dispose();
+            new Window();
+        }else if(ae.getSource() == next){
+            dispose();
+            new LoginHome();
+        }
     }
     
     public static void main(String[] args){
