@@ -1,13 +1,20 @@
 package metro.metrorail;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
 
 
 public class Register extends JFrame implements ActionListener{
     
    JButton save,cancel;
+   JTextField username,mail;
+   JPasswordField password;        
+   
     
     Register(){
         getContentPane().setBackground(Color.WHITE);
@@ -24,7 +31,7 @@ public class Register extends JFrame implements ActionListener{
         user.setBounds(100,130, 100, 30);
         add(user);
 
-        JTextField username = new JTextField();
+         username = new JTextField();
         username.setBounds(170,130,200,30);
         add(username);
 
@@ -32,7 +39,7 @@ public class Register extends JFrame implements ActionListener{
         email.setBounds(100,170, 100, 30);
         add(email);
 
-        JTextField mail = new JTextField();
+         mail = new JTextField();
         mail.setBounds(170,170,200,30);
         add(mail);
 
@@ -40,17 +47,17 @@ public class Register extends JFrame implements ActionListener{
         pass.setBounds(100,210, 100, 30);
         add(pass);
 
-        JTextField password = new JTextField();
+         password = new JPasswordField();
         password.setBounds(170,210,200,30);
         add(password);
 
-        JLabel cpass = new JLabel("Password Agian");
-        cpass.setBounds(60,250, 100, 30);
-        add(cpass);
-
-        JTextField apassword = new JTextField();
-        apassword.setBounds(170,250,200,30);
-        add(apassword);
+//        JLabel cpass = new JLabel("Password Agian");
+//        cpass.setBounds(60,250, 100, 30);
+//        add(cpass);
+//
+//        JTextField apassword = new JTextField();
+//        apassword.setBounds(170,250,200,30);
+//        add(apassword);
 
          cancel = new JButton("Cancel");
         cancel.setBounds(170,300,100,30);
@@ -71,15 +78,36 @@ public class Register extends JFrame implements ActionListener{
 
     }
     
+     private void writeToFile(String username, String mail,String password) {
+        try {
+            FileWriter writer = new FileWriter("F:\\All Java project\\signUp.txt",true);
+            writer.write(username + "," + mail+ "," + password + "\n");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae){
         
-        if(ae.getSource() == save){
+        if(ae.getSource() == cancel){
              dispose();
-       new Login();
-        }else if(ae.getSource() == cancel){
+       new Window();
+        }else if(ae.getSource() == save){
+            
+             String enteredUsername = username.getText();
+             String enteredMail = mail.getText();
+             
+            char[] passwordChars = password.getPassword();
+            String enteredPassword = new String(passwordChars);
+
+            Arrays.fill(passwordChars, ' '); // Clear the password array
+            
+            writeToFile(enteredUsername, enteredMail ,enteredPassword);
+            
              dispose();
-            new Window();
+            new Login();
         }
        
     }
@@ -91,4 +119,5 @@ public class Register extends JFrame implements ActionListener{
     }
 
 }
+
 
