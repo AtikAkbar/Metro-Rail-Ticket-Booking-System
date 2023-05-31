@@ -3,7 +3,8 @@ package metro.metrorail;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -12,9 +13,9 @@ public class Login extends JFrame implements ActionListener {
     JButton cancel, next;
     JTextField username;
     JPasswordField password;
+    String signUpFilePath = "F:\\All Java project\\signUp.txt";
 
     Login() {
-
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
@@ -58,14 +59,24 @@ public class Login extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    private void writeToFile(String username, String password) {
+    private boolean verifyCredentials(String username, String password) {
         try {
-            FileWriter writer = new FileWriter("F:\\All Java project\\signIn.txt", true); // Append mode
-            writer.write(username + "," + password + "\n"); // Add a new line
-            writer.close();
+            BufferedReader reader = new BufferedReader(new FileReader(signUpFilePath));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] userDetails = line.split(",");
+                String savedUsername = userDetails[0];
+                String savedPassword = userDetails[2];
+                if (username.equals(savedUsername) && password.equals(savedPassword)) {
+                    reader.close();
+                    return true;
+                }
+            }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     public void actionPerformed(ActionEvent ae) {
@@ -79,10 +90,12 @@ public class Login extends JFrame implements ActionListener {
 
             Arrays.fill(passwordChars, ' '); // Clear the password array
 
-            writeToFile(enteredUsername, enteredPassword);
-
-            dispose();
-            new LoginHome();
+            if (verifyCredentials(enteredUsername, enteredPassword)) {
+                dispose();
+                new LoginHome();
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid username or password!", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
