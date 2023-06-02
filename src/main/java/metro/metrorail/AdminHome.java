@@ -1,62 +1,68 @@
 package metro.metrorail;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-//
-
 public class AdminHome extends JFrame implements ActionListener {
-    
-    JButton ticket,editnb,time,back;
-    
-    AdminHome(){
-    
-         getContentPane().setBackground(Color.WHITE);
+
+    private JButton ticketbButton, editNoticeBoardButton, timeTableButton, backButton;
+
+    AdminHome() {
+        getContentPane().setBackground(Color.WHITE);
         setLayout(null);
-        
-         ticket = new JButton("Ticket");
-        ticket.setBounds(200,50,120,30);
-        ticket.setBackground(Color.BLACK);
-        ticket.setForeground(Color.WHITE);
-        add(ticket);
-        
-         editnb = new JButton("Notice Board");
-        editnb.setBounds(200,120,120,30);
-        editnb.setBackground(Color.BLACK);
-        editnb.setForeground(Color.WHITE);
-        add(editnb);
-        
-         time = new JButton("Time Table");
-        time.setBounds(200,190,120,30);
-        time.setBackground(Color.BLACK);
-        time.setForeground(Color.WHITE);
-        add(time);
-        
-        back = new JButton("Back");
-        back.setBounds(200,260,120,30);
-        back.addActionListener(this);
-        back.setBackground(Color.BLACK);
-        back.setForeground(Color.WHITE);
-        add(back);
-        
-        
-        
-         setBounds(600,300,600,400);
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
-        
+
+        ticketbButton = new JButton("Ticket");
+        ticketbButton.setBounds(200, 50, 120, 30);
+        ticketbButton.setBackground(Color.BLACK);
+        ticketbButton.setForeground(Color.WHITE);
+        ticketbButton.addActionListener(this); // Add ActionListener
+        add(ticketbButton);
+
+        editNoticeBoardButton = new JButton("Notice Board");
+        editNoticeBoardButton.setBounds(200, 120, 120, 30);
+        editNoticeBoardButton.setBackground(Color.BLACK);
+        editNoticeBoardButton.setForeground(Color.WHITE);
+        editNoticeBoardButton.addActionListener(this); // Add ActionListener
+        add(editNoticeBoardButton);
+
+        timeTableButton = new JButton("Time Table");
+        timeTableButton.setBounds(200, 190, 120, 30);
+        timeTableButton.setBackground(Color.BLACK);
+        timeTableButton.setForeground(Color.WHITE);
+        timeTableButton.addActionListener(this); // Add ActionListener
+        add(timeTableButton);
+
+        backButton = new JButton("Back");
+        backButton.setBounds(200, 260, 120, 30);
+        backButton.addActionListener(this);
+        backButton.setBackground(Color.BLACK);
+        backButton.setForeground(Color.WHITE);
+        add(backButton);
+
     }
-    
-     public void actionPerformed(ActionEvent ae){
-         dispose();
-        new Window();
+
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == ticketbButton) {
+            dispose();
+            new RecharteMoney();
+        } else if (ae.getSource() == editNoticeBoardButton) {
+            dispose();
+            new EditNoticeBoard();
+        } else if (ae.getSource() == timeTableButton) {
+            dispose();
+            new EditTimeTable();
+        } else if (ae.getSource() == backButton) {
+            dispose();
+            new Window();
+        }
     }
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         new AdminHome();
     }
-    
 }
-
-

@@ -1,3 +1,6 @@
+/*
+ * this is -> AdminLogin Frame
+ */
 package metro.metrorail;
 
 import javax.swing.*;
@@ -6,69 +9,72 @@ import java.awt.event.*;
 
 public class AdminLogin extends JFrame implements ActionListener {
 
-    JButton cancel, next;
-    JTextField username;
-    JPasswordField password;
-
+    private JButton cancelButton, nextButton;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private JLabel headingLabel, userLabel, passwordLabel;
     AdminLogin() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
-
-        JLabel text = new JLabel("ADMIN LOGIN");
-        text.setBounds(200, 0, 300, 20);
-        text.setForeground(Color.BLACK);
-        text.setFont(new Font("serif", Font.BOLD, 20));
-        add(text);
-
-        JLabel user = new JLabel("Username");
-        user.setBounds(60, 100, 100, 30);
-        add(user);
-
-        username = new JTextField();
-        username.setBounds(150, 100, 150, 30);
-        add(username);
-
-        JLabel pass = new JLabel("Password");
-        pass.setBounds(60, 150, 100, 30);
-        add(pass);
-
-        password = new JPasswordField();
-        password.setBounds(150, 150, 150, 30);
-        add(password);
-
-        cancel = new JButton("Cancel");
-        cancel.setBounds(40, 210, 120, 30);
-        cancel.addActionListener(this);
-        cancel.setBackground(Color.BLACK);
-        cancel.setForeground(Color.WHITE);
-        add(cancel);
-
-        next = new JButton("Next");
-        next.setBounds(200, 210, 120, 30);
-        next.addActionListener(this);
-        next.setBackground(Color.BLACK);
-        next.setForeground(Color.WHITE);
-        add(next);
-
-        setBounds(600, 300, 600, 400);
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
+
+        headingLabel = new JLabel("ADMIN LOGIN");
+        headingLabel.setBounds(200, 0, 300, 20);
+        headingLabel.setForeground(Color.BLACK);
+        headingLabel.setFont(new Font("serif", Font.BOLD, 20));
+        add(headingLabel);
+
+        userLabel = new JLabel("Username");
+        userLabel.setBounds(60, 100, 100, 30);
+        add(userLabel);
+
+        usernameField = new JTextField();
+        usernameField.setBounds(150, 100, 150, 30);
+        add(usernameField);
+
+        passwordLabel = new JLabel("Password");
+        passwordLabel.setBounds(60, 150, 100, 30);
+        add(passwordLabel);
+
+        passwordField = new JPasswordField();
+        passwordField.setBounds(150, 150, 150, 30);
+        add(passwordField);
+
+        cancelButton = new JButton("Cancel");
+        cancelButton.setBounds(40, 210, 120, 30);
+        cancelButton.addActionListener(this);
+        cancelButton.setBackground(Color.BLACK);
+        cancelButton.setForeground(Color.WHITE);
+        add(cancelButton);
+
+        nextButton = new JButton("Next");
+        nextButton.setBounds(200, 210, 120, 30);
+        nextButton.addActionListener(this);
+        nextButton.setBackground(Color.BLACK);
+        nextButton.setForeground(Color.WHITE);
+        add(nextButton);
+
     }
 
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == cancel) {
+        if (ae.getSource() == cancelButton) {
             dispose();
             new Window();
-        } else if (ae.getSource() == next) {
-            String enteredUsername = username.getText();
-            String enteredPassword = new String(password.getPassword());
+        } else if (ae.getSource() == nextButton) {
+            String enteredUsername = usernameField.getText();
+            String enteredPassword = new String(passwordField.getPassword());
 
             if (enteredUsername.equals("admin") && enteredPassword.equals("472042")) {
                 dispose();
                 new AdminHome();
             } else {
-                JOptionPane.showMessageDialog(this, "Invalid username or password. Please try again.", "Authentication Failed", JOptionPane.ERROR_MESSAGE);
-                username.setText("");
-                password.setText("");
+                JOptionPane.showMessageDialog(this, "Invalid usernameField or passwordField. Please try again.",
+                        "Authentication Failed", JOptionPane.ERROR_MESSAGE);
+                usernameField.setText("");
+                passwordField.setText("");
             }
         }
     }
@@ -78,5 +84,3 @@ public class AdminLogin extends JFrame implements ActionListener {
     }
 
 }
-
-
