@@ -5,61 +5,78 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class AdminLogin extends JFrame implements ActionListener {
-    
-    AdminLogin(){
-    
-         getContentPane().setBackground(Color.WHITE);
+
+    JButton cancel, next;
+    JTextField username;
+    JPasswordField password;
+
+    AdminLogin() {
+        getContentPane().setBackground(Color.WHITE);
         setLayout(null);
-        
-         JLabel text = new JLabel("ADMIN LOGIN");
-        text.setBounds(200,0,300,20);
+
+        JLabel text = new JLabel("ADMIN LOGIN");
+        text.setBounds(200, 0, 300, 20);
         text.setForeground(Color.BLACK);
-        text.setFont(new Font("serif", Font.BOLD , 20));
+        text.setFont(new Font("serif", Font.BOLD, 20));
         add(text);
 
         JLabel user = new JLabel("Username");
-        user.setBounds(60,100,100,30);
+        user.setBounds(60, 100, 100, 30);
         add(user);
-        
-        JTextField username = new JTextField();
-        username.setBounds(150,100,150,30);
+
+        username = new JTextField();
+        username.setBounds(150, 100, 150, 30);
         add(username);
-        
+
         JLabel pass = new JLabel("Password");
-        pass.setBounds(60,150,100,30);
+        pass.setBounds(60, 150, 100, 30);
         add(pass);
-        
-        JTextField password = new JTextField();
-        password.setBounds(150,150,150,30);
+
+        password = new JPasswordField();
+        password.setBounds(150, 150, 150, 30);
         add(password);
-        
-        JButton cancel = new JButton("Cancel");
-        cancel.setBounds(40,210,120,30);
+
+        cancel = new JButton("Cancel");
+        cancel.setBounds(40, 210, 120, 30);
         cancel.addActionListener(this);
         cancel.setBackground(Color.BLACK);
         cancel.setForeground(Color.WHITE);
         add(cancel);
-        
-        JButton next = new JButton("Next");
-        next.setBounds(200,210,120,30);
+
+        next = new JButton("Next");
+        next.setBounds(200, 210, 120, 30);
+        next.addActionListener(this);
         next.setBackground(Color.BLACK);
         next.setForeground(Color.WHITE);
         add(next);
 
-        setBounds(600,300,600,400);
+        setBounds(600, 300, 600, 400);
         setVisible(true);
-    
     }
-    
-    public void actionPerformed(ActionEvent ae){
-         dispose();
-        new Window();
+
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == cancel) {
+            dispose();
+            new Window();
+        } else if (ae.getSource() == next) {
+            String enteredUsername = username.getText();
+            String enteredPassword = new String(password.getPassword());
+
+            if (enteredUsername.equals("admin") && enteredPassword.equals("472042")) {
+                dispose();
+                new AdminHome();
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid username or password. Please try again.", "Authentication Failed", JOptionPane.ERROR_MESSAGE);
+                username.setText("");
+                password.setText("");
+            }
+        }
     }
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         new AdminLogin();
     }
-    
+
 }
 
 
