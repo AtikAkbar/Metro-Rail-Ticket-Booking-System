@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 public class AdminHome extends JFrame implements ActionListener {
 
-    private JButton ticketbButton, editNoticeBoardButton, timeTableButton, backButton;
+    private JButton rechargeButton, editNoticeBoardButton, timeTableButton, backButton;
 
     AdminHome() {
         getContentPane().setBackground(Color.WHITE);
@@ -16,12 +16,12 @@ public class AdminHome extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setVisible(true);
 
-        ticketbButton = new JButton("Ticket");
-        ticketbButton.setBounds(200, 50, 120, 30);
-        ticketbButton.setBackground(Color.BLACK);
-        ticketbButton.setForeground(Color.WHITE);
-        ticketbButton.addActionListener(this); // Add ActionListener
-        add(ticketbButton);
+        rechargeButton = new JButton("Ticket");
+        rechargeButton.setBounds(200, 50, 120, 30);
+        rechargeButton.setBackground(Color.BLACK);
+        rechargeButton.setForeground(Color.WHITE);
+        rechargeButton.addActionListener(this); // Add ActionListener
+        add(rechargeButton);
 
         editNoticeBoardButton = new JButton("Notice Board");
         editNoticeBoardButton.setBounds(200, 120, 120, 30);
@@ -47,9 +47,9 @@ public class AdminHome extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == ticketbButton) {
+        if (ae.getSource() == rechargeButton) {
             dispose();
-            new RecharteMoney();
+            new RechargeMoney();
         } else if (ae.getSource() == editNoticeBoardButton) {
             dispose();
             new EditNoticeBoard();
