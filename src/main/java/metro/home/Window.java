@@ -1,7 +1,7 @@
 /*
- * this is ->   Fitst Frame of the Programm
+ * FIRST Frame of the Programm
  */
-package metro.metrorail;
+package metro.home;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,13 +12,12 @@ public class Window extends JFrame implements ActionListener {
     private JButton adminButton, signUpButton, loginButton;
     private JLabel headingLabel;
 
-    Window() {
+    public Window() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setVisible(true);
 
         headingLabel = new JLabel("Welcome to Metro Ticketing System");
         headingLabel.setBounds(120, 0, 1000, 150);
@@ -47,6 +46,9 @@ public class Window extends JFrame implements ActionListener {
         loginButton.addActionListener(this);
         add(loginButton);
 
+        revalidate();
+        repaint();
+        setVisible(true);
     }
 
     public void actionPerformed(ActionEvent ae) {

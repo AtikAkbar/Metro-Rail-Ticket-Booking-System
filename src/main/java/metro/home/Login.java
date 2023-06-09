@@ -1,28 +1,37 @@
 /*
- * this is -> AdminLogin Frame
+ * LoginFrame
+ * 
+ * window -> login
  */
-package metro.metrorail;
+package metro.home;
+
+import metro.user.LoginHome;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
 
-public class AdminLogin extends JFrame implements ActionListener {
+public class Login extends JFrame implements ActionListener {
 
     private JButton cancelButton, nextButton;
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JLabel headingLabel, userLabel, passwordLabel;
-    AdminLogin() {
+    private String signUpFilePath = "target/files/userInfo/userInfo.txt";
+
+    public Login() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setVisible(true);
 
-        headingLabel = new JLabel("ADMIN LOGIN");
-        headingLabel.setBounds(200, 0, 300, 20);
+        headingLabel = new JLabel("LOGIN");
+        headingLabel.setBounds(250, 0, 100, 20);
         headingLabel.setForeground(Color.BLACK);
         headingLabel.setFont(new Font("serif", Font.BOLD, 20));
         add(headingLabel);
@@ -52,11 +61,36 @@ public class AdminLogin extends JFrame implements ActionListener {
 
         nextButton = new JButton("Next");
         nextButton.setBounds(200, 210, 120, 30);
-        nextButton.addActionListener(this);
         nextButton.setBackground(Color.BLACK);
         nextButton.setForeground(Color.WHITE);
+        nextButton.addActionListener(this);
         add(nextButton);
 
+        revalidate();
+        repaint();
+        setVisible(true);
+    }
+
+    private boolean verifyCredentials(String enteredUsername, String enteredPassword) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(signUpFilePath));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("username=")) {
+                    String savedUsername = line.substring(9);
+                    String passwordLine = reader.readLine();
+                    String savedPassword = passwordLine.substring(9);
+                    if (enteredUsername.equals(savedUsername) && enteredPassword.equals(savedPassword)) {
+                        reader.close();
+                        return true;
+                    }
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void actionPerformed(ActionEvent ae) {
@@ -65,22 +99,22 @@ public class AdminLogin extends JFrame implements ActionListener {
             new Window();
         } else if (ae.getSource() == nextButton) {
             String enteredUsername = usernameField.getText();
-            String enteredPassword = new String(passwordField.getPassword());
+            char[] passwordChars = passwordField.getPassword();
+            String enteredPassword = new String(passwordChars);
 
-            if (enteredUsername.equals("admin") && enteredPassword.equals("472042")) {
+            Arrays.fill(passwordChars, ' '); // Clear the passwordField array
+
+            if (verifyCredentials(enteredUsername, enteredPassword)) {
                 dispose();
-                new AdminHome();
+                new LoginHome();
             } else {
-                JOptionPane.showMessageDialog(this, "Invalid usernameField or passwordField. Please try again.",
-                        "Authentication Failed", JOptionPane.ERROR_MESSAGE);
-                usernameField.setText("");
-                passwordField.setText("");
+                JOptionPane.showMessageDialog(this, "Invalid username or password!", "Login Failed",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }
 
     public static void main(String[] args) {
-        new AdminLogin();
+        new Login();
     }
-
 }

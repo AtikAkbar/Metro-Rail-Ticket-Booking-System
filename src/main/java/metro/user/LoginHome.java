@@ -1,7 +1,11 @@
 /*
- * this is -> UserHome Frame
+ * UserHome Frame
+ * 
+ * window -> login -> loginHome
  */
-package metro.metrorail;
+package metro.user;
+
+import metro.home.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,13 +15,12 @@ public class LoginHome extends JFrame implements ActionListener {
 
     private JButton ticketButton, noticeBoardButton, enquiryButton, backButton;
 
-    LoginHome() {
+    public LoginHome() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setVisible(true);
 
         ticketButton = new JButton("Buy Ticket");
         ticketButton.setBounds(200, 50, 120, 30);
@@ -44,6 +47,9 @@ public class LoginHome extends JFrame implements ActionListener {
         backButton.setForeground(Color.WHITE);
         add(backButton);
 
+        revalidate();
+        repaint();
+        setVisible(true);
     }
 
     public void actionPerformed(ActionEvent ae) {

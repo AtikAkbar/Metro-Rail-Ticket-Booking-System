@@ -1,0 +1,16 @@
+username=Atik Akbar
+password=12345678
+email=atik@atik.com
+cardNumber=5459861404
+balance=300
+securityQuestion=Who are you ?
+securityAnswer=me
+
+username=Abu Rayhan
+password=aburayhan
+email=abu@gmail.com
+cardNumber=9451732606
+balance=300
+securityQuestion=Are you abu rayhan ?
+securityAnswer=yes
+
