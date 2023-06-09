@@ -7,12 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Window extends JFrame implements ActionListener {
+public class Home extends JFrame implements ActionListener {
 
     private JButton adminButton, signUpButton, loginButton;
     private JLabel headingLabel;
 
-    public Window() {
+    public Home() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         setSize(600, 400);
@@ -66,7 +66,7 @@ public class Window extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Window();
+        new Home();
     }
 
 }

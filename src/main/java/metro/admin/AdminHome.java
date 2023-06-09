@@ -5,7 +5,7 @@
  */
 package metro.admin;
 
-import metro.home.Window;
+import metro.home.Home;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,7 +67,7 @@ public class AdminHome extends JFrame implements ActionListener {
             new EditTimeTable();
         } else if (ae.getSource() == backButton) {
             dispose();
-            new Window();
+            new Home();
         }
     }
 

@@ -139,7 +139,7 @@ public class Register extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == cancelButton) {
             dispose();
-            new Window();
+            new Home();
         } else if (ae.getSource() == saveButton) {
             String enteredUsername = usernameField.getText();
             String enteredMail = emailField.getText();

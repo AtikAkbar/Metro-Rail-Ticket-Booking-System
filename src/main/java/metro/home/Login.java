@@ -5,7 +5,7 @@
  */
 package metro.home;
 
-import metro.user.LoginHome;
+import metro.user.UserHome;
 
 import javax.swing.*;
 import java.awt.*;
@@ -96,7 +96,7 @@ public class Login extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == cancelButton) {
             dispose();
-            new Window();
+            new Home();
         } else if (ae.getSource() == nextButton) {
             String enteredUsername = usernameField.getText();
             char[] passwordChars = passwordField.getPassword();
@@ -106,7 +106,7 @@ public class Login extends JFrame implements ActionListener {
 
             if (verifyCredentials(enteredUsername, enteredPassword)) {
                 dispose();
-                new LoginHome();
+                new UserHome();
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid username or password!", "Login Failed",
                         JOptionPane.ERROR_MESSAGE);

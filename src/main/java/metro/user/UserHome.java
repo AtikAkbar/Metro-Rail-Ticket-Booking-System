@@ -5,17 +5,17 @@
  */
 package metro.user;
 
-import metro.home.Window;
+import metro.home.Home;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class LoginHome extends JFrame implements ActionListener {
+public class UserHome extends JFrame implements ActionListener {
 
     private JButton ticketButton, noticeBoardButton, enquiryButton, backButton;
 
-    public LoginHome() {
+    public UserHome() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         setSize(600, 400);
@@ -54,11 +54,11 @@ public class LoginHome extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
         dispose();
-        new Window();
+        new Home();
     }
 
     public static void main(String[] args) {
-        new LoginHome();
+        new UserHome();
     }
 
 }
