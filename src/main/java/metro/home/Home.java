@@ -1,6 +1,3 @@
-/*
- * FIRST Frame of the Programm
- */
 package metro.home;
 
 import javax.swing.*;

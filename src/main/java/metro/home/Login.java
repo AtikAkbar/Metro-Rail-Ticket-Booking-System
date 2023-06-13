@@ -1,8 +1,3 @@
-/*
- * LoginFrame
- * 
- * window -> login
- */
 package metro.home;
 
 import metro.user.UserHome;

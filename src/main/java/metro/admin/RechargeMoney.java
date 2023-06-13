@@ -10,8 +10,9 @@ public class RechargeMoney extends JFrame {
     private JTextField rechargeAmountField;
 
     public RechargeMoney() {
-        setTitle("Recharge Program");
-        setSize(300, 200);
+        getContentPane().setBackground(Color.WHITE);
+        setLayout(null);
+        setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -49,6 +50,7 @@ public class RechargeMoney extends JFrame {
         panel.add(cancelButton);
 
         getContentPane().add(panel);
+        
     }
 
     private void recharge(String cardNumber, int rechargeAmount) {
@@ -69,10 +71,10 @@ public class RechargeMoney extends JFrame {
 
                     // Update the balance
                     balance += rechargeAmount;
-                    line = parts[0] + "=" + parts[1]; // Keep the card number line
+                    line = parts[0] + "=" + parts[1];
                     fileContent.append(line).append(System.lineSeparator());
 
-                    line = "balance=" + balance; // Update the balance line
+                    line = "balance=" + balance; 
                 }
 
                 fileContent.append(line).append(System.lineSeparator());

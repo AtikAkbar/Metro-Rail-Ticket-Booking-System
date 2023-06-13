@@ -14,3 +14,19 @@ balance=300
 securityQuestion=Are you abu rayhan ?
 securityAnswer=yes
 
+username=Afrid Arnob
+password=1qaz2wsx
+email=afrid@gmail.com
+cardNumber=7082076957
+balance=400
+securityQuestion=Are you ready?
+securityAnswer=Certainly
+
+username=Bulbul Mahmud
+password=bulbulmahmud
+email=bulbul@gmail.com
+cardNumber=8845077644
+balance=300
+securityQuestion=who are you ?
+securityAnswer=bulbul
+

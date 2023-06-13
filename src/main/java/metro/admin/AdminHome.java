@@ -1,8 +1,3 @@
-/*
- * AdminHome frame
- * 
- * window -> adminLogin -> adminHome
- */
 package metro.admin;
 
 import metro.home.Home;
