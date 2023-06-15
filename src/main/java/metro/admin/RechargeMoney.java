@@ -11,18 +11,17 @@ public class RechargeMoney extends JFrame {
 
     public RechargeMoney() {
         getContentPane().setBackground(Color.WHITE);
-        setLayout(null);
-        setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 2));
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.insets = new Insets(10, 10, 10, 10);
 
         JLabel cardNumberLabel = new JLabel("Card Number:");
-        cardNumberField = new JTextField();
+        cardNumberField = new JTextField(20);
         JLabel rechargeAmountLabel = new JLabel("Recharge Amount:");
-        rechargeAmountField = new JTextField();
+        rechargeAmountField = new JTextField(20);
         JButton rechargeButton = new JButton("Recharge");
         JButton cancelButton = new JButton("Cancel");
 
@@ -42,15 +41,29 @@ public class RechargeMoney extends JFrame {
             }
         });
 
-        panel.add(cardNumberLabel);
-        panel.add(cardNumberField);
-        panel.add(rechargeAmountLabel);
-        panel.add(rechargeAmountField);
-        panel.add(rechargeButton);
-        panel.add(cancelButton);
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        panel.add(cardNumberLabel, constraints);
+
+        constraints.gridx = 1;
+        panel.add(cardNumberField, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        panel.add(rechargeAmountLabel, constraints);
+
+        constraints.gridx = 1;
+        panel.add(rechargeAmountField, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        panel.add(rechargeButton, constraints);
+
+        constraints.gridx = 1;
+        panel.add(cancelButton, constraints);
 
         getContentPane().add(panel);
-        
+        pack();
     }
 
     private void recharge(String cardNumber, int rechargeAmount) {
@@ -74,7 +87,7 @@ public class RechargeMoney extends JFrame {
                     line = parts[0] + "=" + parts[1];
                     fileContent.append(line).append(System.lineSeparator());
 
-                    line = "balance=" + balance; 
+                    line = "balance=" + balance;
                 }
 
                 fileContent.append(line).append(System.lineSeparator());
