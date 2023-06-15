@@ -2,7 +2,7 @@ username=Atik Akbar
 password=12345678
 email=atik@atik.com
 cardNumber=5459861404
-balance=300
+balance=350
 securityQuestion=Who are you ?
 securityAnswer=me
 
