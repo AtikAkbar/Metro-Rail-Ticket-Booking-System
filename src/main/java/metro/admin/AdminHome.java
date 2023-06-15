@@ -8,7 +8,8 @@ import java.awt.event.*;
 
 public class AdminHome extends JFrame implements ActionListener {
 
-    private JButton rechargeButton, editNoticeBoardButton, timeTableButton, backButton;
+    private JButton rechargeButton, editNoticeBoardButton,  backButton;
+    // JButton timeTableButton;
 
     public AdminHome() {
         getContentPane().setBackground(Color.WHITE);
@@ -31,12 +32,12 @@ public class AdminHome extends JFrame implements ActionListener {
         editNoticeBoardButton.addActionListener(this); // Add ActionListener
         add(editNoticeBoardButton);
 
-        timeTableButton = new JButton("Time Table");
-        timeTableButton.setBounds(200, 190, 150, 30);
-        timeTableButton.setBackground(Color.BLACK);
-        timeTableButton.setForeground(Color.WHITE);
-        timeTableButton.addActionListener(this); // Add ActionListener
-        add(timeTableButton);
+        // timeTableButton = new JButton("Time Table");
+        // timeTableButton.setBounds(200, 190, 150, 30);
+        // timeTableButton.setBackground(Color.BLACK);
+        // timeTableButton.setForeground(Color.WHITE);
+        // timeTableButton.addActionListener(this); // Add ActionListener
+        // add(timeTableButton);
 
         backButton = new JButton("Back");
         backButton.setBounds(200, 260, 150, 30);
@@ -57,9 +58,9 @@ public class AdminHome extends JFrame implements ActionListener {
         } else if (ae.getSource() == editNoticeBoardButton) {
             dispose();
             new EditNoticeBoard();
-        } else if (ae.getSource() == timeTableButton) {
-            dispose();
-            new EditTimeTable();
+        //}  else if (ae.getSource() == timeTableButton) {
+        //     dispose();
+            // new EditTimeTable();
         } else if (ae.getSource() == backButton) {
             dispose();
             new Home();

@@ -31,6 +31,8 @@ public class ContactUs extends JFrame {
         getContentPane().add(panel, BorderLayout.CENTER);
 
         JButton backButton = new JButton("Back");
+        backButton.setBackground(Color.BLACK);
+        backButton.setForeground(Color.WHITE);
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -39,8 +41,8 @@ public class ContactUs extends JFrame {
         });
         getContentPane().add(backButton, BorderLayout.SOUTH);
 
-        revalidate();
-        repaint();
+        // revalidate();
+        // repaint();
         setVisible(true);
     }
 

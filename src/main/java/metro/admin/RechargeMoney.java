@@ -64,6 +64,7 @@ public class RechargeMoney extends JFrame {
 
         getContentPane().add(panel);
         pack();
+        setVisible(true);
     }
 
     private void recharge(String cardNumber, int rechargeAmount) {
@@ -110,10 +111,6 @@ public class RechargeMoney extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new RechargeMoney().setVisible(true);
-            }
-        });
+        new RechargeMoney();
     }
 }

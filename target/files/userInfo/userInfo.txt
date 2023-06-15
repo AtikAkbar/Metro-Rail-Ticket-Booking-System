@@ -26,7 +26,15 @@ username=Bulbul Mahmud
 password=bulbulmahmud
 email=bulbul@gmail.com
 cardNumber=8845077644
-balance=300
+balance=800
 securityQuestion=who are you ?
 securityAnswer=bulbul
+
+username=Muhibul Haq
+password=muhibHaq
+email=muhib@asdf.com
+cardNumber=1592994032
+balance=400
+securityQuestion=Color of the sky ?
+securityAnswer=Blue
 
