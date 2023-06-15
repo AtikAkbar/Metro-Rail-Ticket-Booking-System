@@ -19,8 +19,9 @@ public class ShowUserInfo extends JFrame {
     private JTextArea textArea;
     private JTextField usernameField;
 
-    public ShowUserInfo(String filename) {
+    public ShowUserInfo() {
         super("File Viewer");
+        String filename = "target/files/userInfo/userInfo.txt";
 
         textArea = new JTextArea();
         textArea.setEditable(false);
@@ -86,8 +87,7 @@ public class ShowUserInfo extends JFrame {
     }
 
     public static void main(String[] args) {
-        String filename = "target/files/userInfo/userInfo.txt";
-        ShowUserInfo fileViewer = new ShowUserInfo(filename);
+        ShowUserInfo fileViewer = new ShowUserInfo();
         fileViewer.setVisible(true);
     }
 }

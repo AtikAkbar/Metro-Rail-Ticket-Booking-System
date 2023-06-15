@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 public class UserHome extends JFrame implements ActionListener {
 
-    private JButton ticketButton, noticeBoardButton, contactButton, backButton;
+    private JButton ticketButton, myInfoButton, noticeBoardButton, contactButton, backButton;
 
     public UserHome() {
         getContentPane().setBackground(Color.WHITE);
@@ -24,22 +24,29 @@ public class UserHome extends JFrame implements ActionListener {
         ticketButton.addActionListener(this);
         add(ticketButton);
 
+        myInfoButton = new JButton("My Info");
+        myInfoButton.setBounds(200, 100, 120, 30);
+        myInfoButton.addActionListener(this);
+        myInfoButton.setBackground(Color.BLACK);
+        myInfoButton.setForeground(Color.WHITE);
+        add(myInfoButton);
+
         noticeBoardButton = new JButton("Notice Board");
-        noticeBoardButton.setBounds(200, 120, 120, 30);
+        noticeBoardButton.setBounds(200, 150, 120, 30);
         noticeBoardButton.setBackground(Color.BLACK);
         noticeBoardButton.setForeground(Color.WHITE);
         noticeBoardButton.addActionListener(this);
         add(noticeBoardButton);
 
         contactButton = new JButton("Contact Us");
-        contactButton.setBounds(200, 190, 120, 30);
+        contactButton.setBounds(200, 200, 120, 30);
         contactButton.setBackground(Color.BLACK);
         contactButton.setForeground(Color.WHITE);
         contactButton.addActionListener(this);
         add(contactButton);
 
         backButton = new JButton("Back");
-        backButton.setBounds(200, 260, 120, 30);
+        backButton.setBounds(200, 250, 120, 30);
         backButton.addActionListener(this);
         backButton.setBackground(Color.BLACK);
         backButton.setForeground(Color.WHITE);
@@ -54,6 +61,9 @@ public class UserHome extends JFrame implements ActionListener {
         if (ae.getSource() == ticketButton) {
             dispose();
             // new BuyTicket();
+        } else if (ae.getSource() == myInfoButton) {
+            dispose();
+            new ShowUserInfo();
         } else if (ae.getSource() == noticeBoardButton) {
             dispose();
             new NoticeBoard();
