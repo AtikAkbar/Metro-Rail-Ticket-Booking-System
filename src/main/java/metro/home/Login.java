@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class Login extends JFrame implements ActionListener {
 
-    private JButton cancelButton, nextButton;
+    private JButton cancelButton, nextButton, forgetPasswordButton;
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JLabel headingLabel, userLabel, passwordLabel;
@@ -47,15 +47,20 @@ public class Login extends JFrame implements ActionListener {
         passwordField.setBounds(150, 150, 150, 30);
         add(passwordField);
 
+        forgetPasswordButton = new JButton("Forget Password");
+        forgetPasswordButton.setBounds(150, 190, 150, 30);
+        forgetPasswordButton.addActionListener(this);
+        add(forgetPasswordButton);
+
         cancelButton = new JButton("Cancel");
-        cancelButton.setBounds(40, 210, 120, 30);
+        cancelButton.setBounds(40, 250, 120, 30);
         cancelButton.addActionListener(this);
         cancelButton.setBackground(Color.BLACK);
         cancelButton.setForeground(Color.WHITE);
         add(cancelButton);
 
         nextButton = new JButton("Next");
-        nextButton.setBounds(200, 210, 120, 30);
+        nextButton.setBounds(200, 250, 120, 30);
         nextButton.setBackground(Color.BLACK);
         nextButton.setForeground(Color.WHITE);
         nextButton.addActionListener(this);
@@ -106,6 +111,9 @@ public class Login extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Invalid username or password!", "Login Failed",
                         JOptionPane.ERROR_MESSAGE);
             }
+        } else if (ae.getSource() == forgetPasswordButton) {
+            dispose();
+            // new Home();
         }
     }
 
