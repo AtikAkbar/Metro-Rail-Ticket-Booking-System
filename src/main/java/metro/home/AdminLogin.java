@@ -1,8 +1,3 @@
-/*
- * AdminLogin Frame
- * 
- * window -> adminLogin
- */
 package metro.home;
 
 import javax.swing.*;
