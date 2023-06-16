@@ -75,20 +75,20 @@ public class UserHome extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == ticketButton) {
-            // dispose();
-            setVisible(false);
+            dispose();
+            // setVisible(false);
             // new BuyTicket();
         } else if (ae.getSource() == myInfoButton) {
-            // dispose();
-            setVisible(false);
+            dispose();
+            // setVisible(false);
             new ShowUserInfo();
         } else if (ae.getSource() == noticeBoardButton) {
-            // dispose();
-            setVisible(false);
+            dispose();
+            // setVisible(false);
             new NoticeBoard();
         } else if (ae.getSource() == contactButton) {
-            // dispose();
-            setVisible(false);
+            dispose();
+            // setVisible(false);
             new ContactUs();
         } else if (ae.getSource() == backButton) {
             dispose();

@@ -83,6 +83,7 @@ public class Login extends JFrame implements ActionListener {
                     if (enteredUsername.equals(savedUsername) && enteredPassword.equals(savedPassword)) {
                         reader.close();
                         return true;
+                        
                     }
                 }
             }
