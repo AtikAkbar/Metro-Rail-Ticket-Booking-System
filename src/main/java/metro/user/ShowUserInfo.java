@@ -11,20 +11,18 @@ import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 public class ShowUserInfo extends JFrame {
     private JTextArea textArea;
-    private JTextField usernameField;
-    private JLabel usernameLabel;
     private JButton backButton;
+    private String usearnameFromFile;
 
     public ShowUserInfo() {
-        super("File Viewer");
+        // super("File Viewer");
+        String fileForUsername = "target/files/userInfo/Login.txt";
         String filename = "target/files/userInfo/userInfo.txt";
 
         textArea = new JTextArea();
@@ -32,24 +30,24 @@ public class ShowUserInfo extends JFrame {
 
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setPreferredSize(new Dimension(400, 300));
-
-        usernameLabel = new JLabel("Username:");
-        usernameField = new JTextField(20);
-        JButton showButton = new JButton("Show");
-        showButton.setBackground(Color.BLACK);
-        showButton.setForeground(Color.WHITE);
-
-        showButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = usernameField.getText();
-                try {
-                    readFile(filename, username);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+        
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileForUsername))) {
+            String line = reader.readLine(); // Read the first line of the file
+            if (line != null) {
+                System.out.println("String read from file: " + line);
+                usearnameFromFile = line;
+            } else {
+                System.out.println("The file is empty.");
             }
-        });
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
+        }
+
+        try {
+            readFile(filename, usearnameFromFile);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
 
         backButton = new JButton("Back");
         backButton.setBackground(Color.BLACK);
@@ -58,14 +56,14 @@ public class ShowUserInfo extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new UserHome();
+                new UserHome().setVisible(true);
             }
         });
 
         JPanel inputPanel = new JPanel();
-        inputPanel.add(usernameLabel);
-        inputPanel.add(usernameField);
-        inputPanel.add(showButton);
+        // inputPanel.add(usernameLabel);
+        // inputPanel.add(usernameField);
+        // inputPanel.add(showButton);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(backButton);
@@ -82,7 +80,7 @@ public class ShowUserInfo extends JFrame {
         setVisible(true);
     }
 
-    private void readFile(String filename, String username) throws IOException {
+    private void readFile(String filename, String usearnameFromFile) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filename));
         StringBuilder content = new StringBuilder();
         String line;
@@ -90,7 +88,7 @@ public class ShowUserInfo extends JFrame {
         boolean foundUser = false;
 
         while ((line = reader.readLine()) != null) {
-            if (line.startsWith("username=" + username)) {
+            if (line.startsWith("username=" + usearnameFromFile)) {
                 foundUser = true;
                 content.append(line);
                 content.append('\n');

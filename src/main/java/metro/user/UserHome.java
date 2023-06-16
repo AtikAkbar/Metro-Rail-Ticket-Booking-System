@@ -5,6 +5,8 @@ import metro.home.Home;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class UserHome extends JFrame implements ActionListener {
 
@@ -57,18 +59,36 @@ public class UserHome extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    public UserHome(String username) {
+        this();
+        System.out.println(username);
+
+        try {
+            FileWriter writer = new FileWriter("target/files/userInfo/Login.txt", false);
+            writer.write(username);
+            writer.close();
+            System.out.println("String written to the file successfully.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file: " + e.getMessage());
+        }
+    }
+
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == ticketButton) {
-            dispose();
+            // dispose();
+            setVisible(false);
             // new BuyTicket();
         } else if (ae.getSource() == myInfoButton) {
-            dispose();
+            // dispose();
+            setVisible(false);
             new ShowUserInfo();
         } else if (ae.getSource() == noticeBoardButton) {
-            dispose();
+            // dispose();
+            setVisible(false);
             new NoticeBoard();
         } else if (ae.getSource() == contactButton) {
-            dispose();
+            // dispose();
+            setVisible(false);
             new ContactUs();
         } else if (ae.getSource() == backButton) {
             dispose();

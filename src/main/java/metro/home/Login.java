@@ -106,14 +106,14 @@ public class Login extends JFrame implements ActionListener {
 
             if (verifyCredentials(enteredUsername, enteredPassword)) {
                 dispose();
-                new UserHome();
+                new UserHome(enteredUsername);
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid username or password!", "Login Failed",
                         JOptionPane.ERROR_MESSAGE);
             }
         } else if (ae.getSource() == forgetPasswordButton) {
             dispose();
-            // new Home();
+            new Home();
         }
     }
 
