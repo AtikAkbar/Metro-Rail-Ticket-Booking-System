@@ -21,28 +21,31 @@ public class TicketInfo extends javax.swing.JFrame {
      */
     public TicketInfo() { 
   initComponents();
-    }
+      setMatchedLineInJLabel6();
+    setRandomNumberInJLabel8();
 
-private void setMatchedLineInJLabel6() {
-    String userInfoFilePath = "target/files/userInfo/userInfo.txt";
+}
+    private void setMatchedLineInJLabel6() {
     String loginFilePath = "target/files/userInfo/Login.txt";
-    
-    String targetString = ""; // Set your desired target string here
 
     try {
-        BufferedReader reader = new BufferedReader(new FileReader(userInfoFilePath));
+        BufferedReader reader = new BufferedReader(new FileReader(loginFilePath));
         String line;
-        while ((line = reader.readLine()) != null) {
-            if (line.trim().equals(targetString)) {
-                jLabel6.setText(line);
-                break;
-            }
+        if ((line = reader.readLine()) != null) {
+            jLabel6.setText(line);
         }
         reader.close();
     } catch (IOException e) {
         e.printStackTrace();
     }
 }
+    private void setRandomNumberInJLabel8() {
+    Random random = new Random();
+    long randomNumber = 10000000L + random.nextInt(90000000);
+
+    jLabel8.setText(Long.toString(randomNumber));
+}
+
 
     
     
@@ -89,8 +92,6 @@ private void setMatchedLineInJLabel6() {
 
         jLabel6.setText("jLabel6");
 
-        jLabel7.setText("jLabel7");
-
         jLabel8.setText("jLabel8");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,7 +133,7 @@ private void setMatchedLineInJLabel6() {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         pack();
