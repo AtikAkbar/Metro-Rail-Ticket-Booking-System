@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileWriter;
 import java.io.IOException;
+import metro.home.Locations;
 
 public class UserHome extends JFrame implements ActionListener {
 
@@ -78,6 +79,7 @@ public class UserHome extends JFrame implements ActionListener {
             dispose();
             // setVisible(false);
             // new BuyTicket();
+            new Locations().setVisible(true);
         } else if (ae.getSource() == myInfoButton) {
             dispose();
             // setVisible(false);

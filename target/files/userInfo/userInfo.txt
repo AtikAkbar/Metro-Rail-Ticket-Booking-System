@@ -1,5 +1,5 @@
 username=Atik Akbar
-password=12345678
+password=whydumb
 email=atik@atik.com
 cardNumber=5459861404
 balance=350
@@ -37,4 +37,20 @@ cardNumber=1592994032
 balance=400
 securityQuestion=Color of the sky ?
 securityAnswer=Blue
+
+username=radoan
+password=whysomeee
+email=radoa@gmail.com
+cardNumber=2217537734
+balance=300
+securityQuestion=school
+securityAnswer=dzs
+
+username=radoan
+password=whymememe
+email=radoan@gmail
+cardNumber=2115960621
+balance=300
+securityQuestion=school
+securityAnswer=dzs
 
