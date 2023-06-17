@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import metro.user.ResetPassword;
+import metro.user.SecurityQuestion;
 
 public class Login extends JFrame implements ActionListener {
 
@@ -114,7 +116,7 @@ public class Login extends JFrame implements ActionListener {
             }
         } else if (ae.getSource() == forgetPasswordButton) {
             dispose();
-            new Home();
+            new ResetPassword().setVisible(true);
         }
     }
 
